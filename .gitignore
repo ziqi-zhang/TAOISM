@@ -1,0 +1,80 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# OSX
+*.DS_STORE
+
+# python
+*.pyc
+
+# SGX build files
+.config_HW_PRERELEASE_x64
+App/Enclave_u.c
+App/Enclave_u.h
+Enclave/Enclave_t.c
+Enclave/Enclave_t.h
+goten_app
+
+# outputs
+results/
+*.json
+
+.idea/
+.cproject
+.project
+.config_SIM_PRERELEASE_x64
+.config_SIM_DEBUG_x64
+.ycm_extra_conf.py
+App/.ycm_extra_conf.py
+.ycm_extra_conf.py.bkp
+data
+logfile.log
+conv2d_extension/build
+conv2d_extension/dist
+conv2d_extension/conv2d_cudnn.egg-info
+GPUSlalom/
+log/
+SGXDNN/bin_sgx/
+*.log
+slalom_app
+
+# eigen
+Include/eigen
+Include/eigen3_sgx
+
+teeslice/resnet_baseline
+teeslice/GUIDE.md
+
+teeslice/cifar10val/*-resnet50*
+teeslice/cifar10val/*-resnet101*
+teeslice/cifar10val/*.csv
