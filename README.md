@@ -118,7 +118,7 @@ For each layer, you can use `EnclaveMode` parameter at initialization to specify
 NOTE: If you want to construct a network of other architectures, you may need to change the memory chunk size in the enclave. Due to the memory limitation of SGX, currently the memory in the SGX is managed in a chunk-based manner. The chunk size is defined in `/Include/common_with_enclaves.h` by `STORE_CHUNK_ELEM` and `WORK_CHUNK_ELEM` (Currently they are the same). For each layer, the framework loads one chunk in the memory and perform the operation on the chunk. 
 
 
-For ResNet, if your input image size is 224x224, the chunk size should be set to 9408. If your input is 32x32, the chunk size should be set to 4704. The criterion to set the chunk size is that it should compatible with the tensor size for each layer during matrix multiplication. For linear layer, the chunk size should be divisible by input channels. For convolution layer, because the current implementation is based on im2col, the chunk size should be divisible $kernel\_size * kernel\_size$
+For ResNet, if your input image size is 224x224, the chunk size should be set to 9408. If your input is 32x32, the chunk size should be set to 4704. The criterion to set the chunk size is that it should compatible with the tensor size for each layer during matrix multiplication. For linear layer, the chunk size should be divisible by input channels. For convolution layer, because the current implementation is based on im2col, the chunk size should be divisible $input\_width * input\_channel$ and $output\_channel$ (as the assert statements in `SGXDNN/layers/conv.cpp`).
 
 
 If you want to add new layer (take `linear` as an example) implementation in SGX, you should modify following files:
