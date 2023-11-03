@@ -1,7 +1,7 @@
 <!-- # A TEE-based Confidential Heterogeneous Deployment Framework for DNN Models -->
 
 <!-- <div align="left"> -->
-<h1>TAOISM: A <ins>T</ins>EE-b<ins>a</ins>sed C<ins>o</ins>nfident<ins>i</ins>al Heterogeneou<ins>s</ins> Deploy<ins>m</ins>ent Framework for DNN Models</h1>
+<h1>TAOISM: A <ins>T</ins>EE-b<ins>a</ins>sed C<ins>o</ins>nfident<ins>i</ins>al Heterogeneou<ins>s</ins> Fra<ins>m</ins>ework for DNN Models</h1>
 <div align="center">
   <a href="https://opensource.org/license/mit/">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue">
@@ -22,7 +22,7 @@
 
 
 
-TAOISM is a <ins>T</ins>EE-b<ins>A</ins>sed c<ins>O</ins>nfident<ins>I</ins>al heterogeneou<ins>S</ins> deploy<ins>M</ins>ent framework for DNN Models. TAOISM is light-weight, flexible and compatible to PyTorch models. TAOISM can put some privacy-related and critical layers of a DNN model into SGX enclaves, and the rest of the model is executed on GPU. TAOISM is designed to evaluate the inference speed of various TEE-Shielded DNN Partition (TSDP) strategies. 
+TAOISM is a <ins>T</ins>EE-b<ins>A</ins>sed c<ins>O</ins>nfident<ins>I</ins>al heterogeneou<ins>S</ins> fra<ins>M</ins>ework for DNN Models. TAOISM is light-weight, flexible and compatible to PyTorch models. TAOISM can put some privacy-related and critical layers of a DNN model into SGX enclaves, and the rest of the model is executed on GPU. TAOISM is designed to evaluate the inference speed of various TEE-Shielded DNN Partition (TSDP) strategies. 
 
 
 
@@ -121,6 +121,14 @@ NOTE: If you want to construct a network of other architectures, you may need to
 For ResNet, if your input image size is 224x224, the chunk size should be set to 9408. If your input is 32x32, the chunk size should be set to 4704. The criterion to set the chunk size is that it should compatible with the tensor size for each layer during matrix multiplication. For linear layer, the chunk size should be divisible by input channels. For convolution layer, because the current implementation is based on im2col, the chunk size should be divisible $kernel\_size * kernel\_size$
 
 
+If you want to add new layer (take `linear` as an example) implementation in SGX, you should modify following files:
+- Add the file of python object in `python/layers/sgx_xxx.py`
+- Add the python interface for the initialization, forward, and backward (if you need backward) functions in `python/enclave_interfaces.py`
+- Add the argument type for the python interface in `__init__` function of the object `EnclaveInterface` in `python/enclave_interfaces.py`
+- Add C++ application interface in `App/enclave_bridge.cpp`. The C++ application interface calls the ECALL functions
+- Add ECALL definition in `Enclave/Enclave.edl`
+- Add ECALL implementation in `Enclave/sgxdnn.cpp`. The implementation calls the enclave functions
+- Add the declaration and implementation of enclave functions in `*.hpp` and `*.cpp` files in `SGXDNN/layers/`
 
 
 ##  5. <a name='CodeStructure'></a>Code Structure
