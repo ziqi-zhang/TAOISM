@@ -80,7 +80,7 @@ endif
 
 App_CC_Objects := $(App_CC_Files:.cc=.so)
 App_Cpp_Objects := $(App_Cpp_Files:.cpp=.so)
-App_Name := goten_app
+App_Name := taoism_app
 
 ######## Enclave Settings ########
 

@@ -250,7 +250,7 @@ We summarize the code structure and the functionality of major files/directories
 |   `-- utils.py
 |-- enclave.signed.so
 |-- enclave.so                      Dynamic library of enclave code
-|-- goten_app                       Compiled application
+|-- taoism_app                       Compiled application
 |-- LICENSE
 |-- logfile.log
 |-- Makefile                        Makefile to compile the C/C++ part
@@ -263,7 +263,7 @@ We summarize the code structure and the functionality of major files/directories
 ##  6. <a name='Disclaimer'></a>Disclaimer
 DO NOT USE THIS SOFTWARE TO SECURE ANY REAL-WORLD DATA OR COMPUTATION!
 
-This software is a proof-of-concept meant for performance testing of the Goten framework ONLY. It is full of security vulnerabilities that facilitate testing, debugging and performance measurements. In any real-world deployment, these vulnerabilities can be easily exploited to leak all user inputs.
+This software is a proof-of-concept meant for performance testing of the TAOISM framework ONLY. It is full of security vulnerabilities that facilitate testing, debugging and performance measurements. In any real-world deployment, these vulnerabilities can be easily exploited to leak all user inputs.
 
 Some parts that have a negligble impact on performance but that are required for a real-world deployment are not currently implemented (e.g., setting up a secure communication channel with a remote client and producing verifiable attestations).
 
