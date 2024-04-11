@@ -66,11 +66,11 @@ GPUSlalom/
 log/
 SGXDNN/bin_sgx/
 *.log
-slalom_app
+taoism_app
 
 # eigen
-Include/eigen
-Include/eigen3_sgx
+# Include/eigen
+# Include/eigen3_sgx
 
 teeslice/resnet_baseline
 teeslice/GUIDE.md

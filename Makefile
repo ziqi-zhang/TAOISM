@@ -241,6 +241,7 @@ Enclave/bin/Enclave_t.o: Enclave/Enclave_t.c
 	@echo "CC   <=  $<"
 
 SGXDNN/bin_sgx/%.o: SGXDNN/%.S
+	mkdir -p SGXDNN/bin_sgx
 	$(CC) -c $< -o $@
 	@echo "CC   <=  $<"
 
